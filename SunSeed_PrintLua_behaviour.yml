@@ -1,7 +1,7 @@
 title: SunSeed Print.Lua behavior
 id: 594f25d4-69f9-446d-ba63-04eed3e3cbc2
 status: experimental
-description: Detects the behavior of the malicious script written in Lua, called print.lua, that it is used for the malicious payload
+description: Detects the behavior of the malicious script written in Lua, called print.lua, that it is used for the execution of the malicious payload of SunSeed
 author: Silvia Hernández
 tags:
   - attack.execution
