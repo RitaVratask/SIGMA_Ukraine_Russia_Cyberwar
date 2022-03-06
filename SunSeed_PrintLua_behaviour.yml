@@ -1,0 +1,27 @@
+title: SunSeed Print.Lua behavior
+id: 594f25d4-69f9-446d-ba63-04eed3e3cbc2
+status: experimental
+description: Detects the behavior of the malicious script written in Lua, called print.lua, that it is used for the malicious payload
+author: Silvia Hernández
+tags:
+  - attack.execution
+  - attack.t1059 
+references:
+  - https://www.proofpoint.com/us/blog/threat-insight/asylum-ambuscade-state-actor-uses-compromised-private-ukrainian-military-emails
+date: 2022/03/06
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|contains:
+      - '*\sppsvc.exe*'
+    CommandLine|contains:
+      - '*C:/ProgramData/.security-soft/print.lua*'
+  condition: selection
+fields:
+  - Image
+  - CommandLine
+falsepositives:
+  - None
+level: critical

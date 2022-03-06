@@ -1,0 +1,24 @@
+title: Sunseed persistence mechanism
+id: 4d1be9ea-fec6-44ea-b98c-c8a41822804e
+status: experimental
+description: Detects persistence registry keys from malware Sunseed
+author: Silvia Hernández
+tags:
+  - attack.privilege_escalation
+  - attack.persistence
+  - attack.defense_evasion
+  - attack.t1547.001
+references:
+  - https://www.proofpoint.com/us/blog/threat-insight/asylum-ambuscade-state-actor-uses-compromised-private-ukrainian-military-emails
+date: 2022/03/06
+logsource:
+  category: registry_event
+  product: windows
+detection:
+  selection:
+    TargetObject|contains:
+      - '\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Software Protection Service.lnk'
+  condition: selection
+falsepositives:
+  - unknown
+level: critical
