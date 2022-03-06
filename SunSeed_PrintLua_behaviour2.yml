@@ -1,0 +1,25 @@
+title: SunSeed Print.Lua behavior 2
+id: 594f25d4-69f9-446d-ba63-04eed3e3cbc2
+status: experimental
+description: Detects the behavior of the malicious script written in Lua, called print.lua, that it is used for the execution of the malicious payload of SunSeed
+author: Silvia Hernández
+tags:
+  - attack.execution
+  - attack.t1059 
+references:
+  - https://www.proofpoint.com/us/blog/threat-insight/asylum-ambuscade-state-actor-uses-compromised-private-ukrainian-military-emails
+date: 2022/03/06
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection:
+    TargetObject|contains|all: 
+      - '*\??\MountPointManager\*'
+      - '*C:\*'
+  condition: selection
+fields:
+  - TargetObject
+falsepositives:
+  - None
+level: critical
